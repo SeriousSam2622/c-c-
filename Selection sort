@@ -1,0 +1,40 @@
+//SElection sort
+#include<stdio.h>
+#include<stdlib.h>
+int selection_sort(int *a,int i,int n)
+{
+	int j,min,LOC;
+	LOC=i;
+	min=*(a+i);
+	for(j=i+1;j<n;j++)
+	{
+		if(min>*(a+j))
+		{
+			min=*(a+j);
+			LOC=j;
+		}
+	}
+	return LOC;
+} 
+main()
+{
+	int n;
+	printf("Enter the size of the array");
+	scanf("%d",&n);
+	int *a,i,LOC,temp;
+	a=(int*)malloc(n*sizeof(int));
+	printf("\nEnter the elements  of the array");
+	for(i=0;i<n;i++)
+	scanf("%d",&*(a+i));
+	for(i=0;i<n;i++)
+	{
+		LOC=selection_sort(a,i,n);
+		temp=*(a+i);
+		*(a+i)=*(a+LOC);
+		*(a+LOC)=temp;
+	}
+	printf("\nHence the sorted array is");
+	for(i=0;i<n;i++)
+	printf("%d ",*(a+i));
+	getch();
+}
